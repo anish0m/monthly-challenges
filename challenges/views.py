@@ -1,4 +1,4 @@
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render
 
 
@@ -18,6 +18,13 @@ monthly_challenges = {
 }
 
 # Create your views here.
+
+
+def monthly_challenge_by_number(request, month):
+    months = list(monthly_challenges.keys())
+    redirect_month = months[month]
+
+    HttpResponseRedirect("/challenges/" + redirect_month)
 
 
 def monthly_challenge(request, month):
